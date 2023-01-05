@@ -1,0 +1,133 @@
+
+ [
+    {
+      "id": 1,
+      "name": "harsh",
+      "className": "BCA",
+      "subject": "python",
+      "section": "A"
+    },
+    {
+      "id": 2,
+      "name": "rahul",
+      "className": "BCA",
+      "subject": "C++",
+      "section": "B"
+    },
+    {
+      "id": 3,
+      "name": "pooja",
+      "className": "BTECH",
+      "subject": "nodeJs",
+      "section": "A"
+    },
+    {
+      "id": 4,
+      "name": "pawan",
+      "className": "MCA",
+      "subject": "Java",
+      "section": "C"
+    },
+    {
+      "id": 5,
+      "name": "hardik",
+      "className": "MCA",
+      "subject": "English",
+      "section": "A"
+    },
+    {
+      "id": 6,
+      "name": "Arun",
+      "className": "B.A",
+      "subject": "English",
+      "section": "A"
+    },
+    {
+      "id": 7,
+      "name": "varun",
+      "className": "MSC",
+      "subject": "ReactJs",
+      "section": "A"
+    },
+    {
+      "id": 8,
+      "name": "Anisha",
+      "className": "BCA",
+      "subject": "flutter",
+      "section": "B"
+    },
+    {
+      "id": 9,
+      "name": "Simmi",
+      "className": "BSC",
+      "subject": "ReactNative",
+      "section": "C"
+    },
+    {
+      "id": 10,
+      "name": "pihu",
+      "className": "BSC",
+      "subject": "python",
+      "section": "A"
+    },
+    {
+        "id": 11,
+        "name": "arsh",
+        "className": "BCA",
+        "subject": "Java",
+        "section": "A"
+      },
+      {
+        "id": 12,
+        "name": "nisach",
+        "className": "B.A",
+        "subject": "English",
+        "section": "A"
+      },
+      {
+        "id": 13,
+        "name": "mandeep",
+        "className": "B.A",
+        "subject": "ecconomics",
+        "section": "A"
+      },
+      {
+        "id": 14,
+        "name": "nikhil",
+        "className": "B.A",
+        "subject": "hindi",
+        "section": "C"
+      },
+      {
+        "id": 15,
+        "name": "gourav",
+        "className": "MCA",
+        "subject": "English",
+        "section": "B"
+      },
+      {
+        "id": 16,
+        "name": "nikita",
+        "className": "B.A",
+        "subject": "math",
+        "section": "A"
+      },
+      {
+        "id": 17,
+        "name": "manish",
+        "className": "BCA",
+        "subject": "flutter",
+        "section": "B"
+      },
+      {
+        "id": 18,
+        "name": "love",
+        "className": "BTECH",
+        "subject": "nodeJs",
+        "section": "C"
+      }
+  ]
+
+
+  
+  

@@ -1,10 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
 
+import "./App.css";
+import "./Style.css";
+
+// import ContainerLayout from "./components/ContainerLayout";
+import Main from "./Component/Main";
+// import Multipleoptions from "./Gallery/Fetchdatafromjsonexample"
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="App">  
+      {/* <ContainerLayout /> */}
+      {/* <ContainerLayout /> */}
+      <Main/>
+      {/* <Multipleoptions /> */}
+      
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -17,7 +26,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }

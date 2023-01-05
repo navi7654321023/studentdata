@@ -1,0 +1,21 @@
+.content{
+    background-color:#FFD1DC;
+    height: 100vh;
+}
+.input{
+   
+    width: 130px !important;
+   
+}
+.display{
+    display: flex;
+   justify-content: center;
+    /* margin-top: -110px; */
+}
+
+.padding{
+    padding: 20px!important;
+}
+.margin{
+    margin-left: 330px!important;
+}
