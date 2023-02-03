@@ -19,3 +19,6 @@
 .margin{
     margin-left: 330px!important;
 }
+.fa-flag:hover {
+    color: red;
+}

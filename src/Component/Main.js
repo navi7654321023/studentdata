@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import "./json.css";
 import Userdata from "./../userdata.json";
@@ -13,13 +13,65 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import TableBody from "@mui/material/TableBody";
 import { styled } from "@mui/material/styles";
+import Button from "@mui/material/Button";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 
 function Fetchjsondata() {
-  const [selectedClass, setSelectedClass] = useState("");
-  const [selectedSubject, setSelectedSubject] = useState("");
-  const [selectedSection, setSelectedSection] = useState("");
-  const [selectedOptionClass, setSelectedOptionClass] = useState([]);
+  const [selectedOptionClass, setSelectedOptionClass] = useState(Userdata);
+  const [studentDetails, setStudentDetails] = useState();
+
+  const handleChange = (event) => {
+    setStudentDetails({
+      ...studentDetails,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const filterbtn = () => {
+    const filteredData = selectedOptionClass?.filter((elem) => {
+      let include = true;
+      if (studentDetails?.className) {
+        include = include && elem?.className === studentDetails?.className;
+      }
+      if (studentDetails?.subject) {
+        include = include && elem?.subject === studentDetails?.subject;
+      }
+      if (studentDetails?.section) {
+        include = include && elem?.section === studentDetails?.section;
+      }
+      return include;
+    });
+    setSelectedOptionClass(filteredData);
+    setStudentDetails("");
+    console.log("filteredData", filteredData);
+  };
+
+  let ArrayForClass = [];
+  let ArrayForSection = [];
+  let ArrayForSubject = [];
+
+  // eslint-disable-next-line no-lone-blocks
+  {
+    Userdata?.map((users) => {
+      ArrayForClass.push(`${[users.className]}`);
+      ArrayForSection.push(`${[users.section]}`);
+      ArrayForSubject.push(`${[users.subject]}`);
+    });
+  }
+
+  let showArrayForClass = [...new Set(ArrayForClass)];
+  let showArrayForSection = [...new Set(ArrayForSection)];
+  let showArrayForSubject = [...new Set(ArrayForSubject)];
+
+  const handleclick = () => {
+    setStudentDetails({
+      className:"",
+      section:"",
+      subject:"",
+    });
+    setSelectedOptionClass(Userdata);
+  };
+
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -40,49 +92,6 @@ function Fetchjsondata() {
     },
   }));
 
-  useEffect(() => {
-    setSelectedOptionClass(Userdata);
-  }, []);
-
-  const handleChangeClass = (event) => {
-    setSelectedClass(event.target.value);
-  };
-
-  const handleChangeSubject = (event) => {
-    setSelectedSubject(event.target.value);
-  };
-
-  const handleChangeSection = (event) => {
-    setSelectedSection(event.target.value);
-  };
-
-  useEffect(() => {
-    const selectedOptionClass = Userdata.filter(
-      (users) =>
-        (selectedClass === "" || users.className === selectedClass) &&
-        (selectedSubject === "" || users.subject === selectedSubject) &&
-        (selectedSection === "" || users.section === selectedSection)
-    );
-    setSelectedOptionClass(selectedOptionClass);
-  }, [selectedClass, selectedSubject, selectedSection]);
-
-  let ArrayForClass = [];
-  let ArrayForSection = [];
-  let ArrayForSubject = [];
-
-  // eslint-disable-next-line no-lone-blocks
-  {
-    Userdata?.map((users) => {
-      ArrayForClass.push(`${[users.className]}`);
-      ArrayForSection.push(`${[users.section]}`);
-      ArrayForSubject.push(`${[users.subject]}`);
-    });
-  }
-
-  let showArrayForClass = [...new Set(ArrayForClass)];
-  let showArrayForSection = [...new Set(ArrayForSection)];
-  let showArrayForSubject = [...new Set(ArrayForSubject)];
-
   return (
     <>
       <Container>
@@ -92,8 +101,9 @@ function Fetchjsondata() {
             <InputLabel>CLASS</InputLabel>
             <Select
               label="CLASS"
-              value={selectedClass}
-              onChange={handleChangeClass}
+              value={studentDetails?.className}
+              name="className"
+              onChange={handleChange}
             >
               {showArrayForClass.map((users) => (
                 <MenuItem value={users}>{users}</MenuItem>
@@ -106,8 +116,9 @@ function Fetchjsondata() {
 
             <Select
               label="SECTION"
-              value={selectedSection}
-              onChange={handleChangeSection}
+              name="section"
+              value={studentDetails?.section}
+              onChange={handleChange}
             >
               {showArrayForSection.map((users) => (
                 <MenuItem value={users}>{users}</MenuItem>
@@ -118,14 +129,41 @@ function Fetchjsondata() {
             <InputLabel>SUBJECT</InputLabel>
             <Select
               label="SUBJECT"
-              value={selectedSubject}
-              onChange={handleChangeSubject}
+              name="subject"
+              value={studentDetails?.subject}
+              onChange={handleChange}
             >
               {showArrayForSubject.map((users) => (
                 <MenuItem value={users}>{users}</MenuItem>
               ))}
             </Select>
           </FormControl>
+          <Button
+            style={{
+              borderRadius: 35,
+              backgroundColor: "black",
+              marginLeft: "30px",
+              padding: "10px 16px",
+              fontSize: "18px",
+            }}
+            variant="contained"
+            onClick={handleclick}
+          >
+            Clear data
+          </Button>
+          <Button
+            style={{
+              borderRadius: 35,
+              backgroundColor: "black",
+              marginLeft: "30px",
+              padding: "10px 16px",
+              fontSize: "18px",
+            }}
+            variant="contained"
+            onClick={filterbtn}
+          >
+            FilterData
+          </Button>
         </div>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }}>
@@ -164,5 +202,4 @@ function Fetchjsondata() {
     </>
   );
 }
-
 export default Fetchjsondata;
